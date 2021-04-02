@@ -60,7 +60,8 @@ exports.updateStatus = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { status } = req.body;
-    const friend = await Friend.findOne({ where: { id, requestToId: req.user.id } });
+    console.log(id, req.user.id);
+    const friend = await Friend.findOne({ where: { requestFromId: id, requestToId: req.user.id } });
     if (!friend) return res.status(400).json({ message: 'this user cannot update status with this friend id' });
     friend.status = status;
     await friend.save();

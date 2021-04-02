@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const errorMiddleware = require('./middlewares/error');
 const userController = require('./controllers/userController');
 const postRoute = require('./routes/postRoute');
@@ -8,6 +9,7 @@ const friendRoute = require('./routes/friendRoute');
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
