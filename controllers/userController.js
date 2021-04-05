@@ -20,6 +20,21 @@ exports.protect = async (req, res, next) => {
   }
 };
 
+exports.me = (req, res, next) => {
+  const { id, firstName, lastName, email, profileImg, motto, location } = req.user;
+  res.status(200).json({
+    user: {
+      id,
+      firstName,
+      lastName,
+      email,
+      profileImg,
+      motto,
+      location
+    }
+  });
+};
+
 exports.register = async (req, res, next) => {
   try {
     const { email, password, confirmPassword, firstName, lastName } = req.body;
