@@ -5,6 +5,7 @@ const errorMiddleware = require('./middlewares/error');
 const userController = require('./controllers/userController');
 const postRoute = require('./routes/postRoute');
 const friendRoute = require('./routes/friendRoute');
+const userRoute = require('./routes/userRoute');
 // const { sequelize } = require('./models');
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/posts', postRoute);
 app.use('/friends', friendRoute);
+app.use('/users', userRoute);
 app.post('/register', userController.register);
 app.post('/login', userController.login);
 

@@ -57,3 +57,20 @@ exports.login = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.updateUser = async (req, res, next) => {
+  try {
+    const { firstName, lastName, motto, location } = req.body;
+
+    // req.user.idfirstName = firstName;
+    // req.user.lastName = lastName;
+    // req.user.motto = motto;
+    // req.user.location = location;
+    // await req.user.save();
+
+    await User.update({ firstName, lastName, motto, location }, { where: { id: req.user.id } });
+    res.status(200).json({ message: 'update user success' });
+  } catch (err) {
+    next(err);
+  }
+};
